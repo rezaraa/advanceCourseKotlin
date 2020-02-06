@@ -8,7 +8,7 @@ import kotlinx.android.synthetic.main.recycler_items.view.*
 
 class Recycleradapter (
     val names: List<String>,
-    val clickListener: Interface
+    val clickListener:(String)->Unit
 ) :
     RecyclerView.Adapter<Recycleradapter.RecyclerViewHolderKotlinClass>() {
 
@@ -29,13 +29,12 @@ class Recycleradapter (
 
     class RecyclerViewHolderKotlinClass(
         val item: View,
-        val clickListener: Interface
+        val clickListener:(String)->Unit
     ) : RecyclerView.ViewHolder(item) {
         fun onBind(name: String) {
             item.txtname.text = name
-
             item.setOnClickListener {
-                clickListener.onclick(name)
+                clickListener(name)
             }
 
 
